@@ -8,5 +8,7 @@ public interface JobService {
 
     List<Job> findAll();
 
-    void createJobs(Job job);
+    Job createJob(Job job);
+
+    Job searchJobById(Long id);
 }
