@@ -59,6 +59,8 @@ public class JobServiceImpl implements JobService {
                 Job existingJob = jobRepository.findAll().get(i);
                 existingJob.setTitle(job.getTitle());
                 existingJob.setDescription(job.getDescription());
+                existingJob.setMinSalary(job.getMinSalary());
+                existingJob.setMaxSalary(job.getMaxSalary());
                 return true;
             }
         }
