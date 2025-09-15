@@ -24,4 +24,9 @@ public class JobRepositoryImpl implements JobRepository {
         return job;
     }
 
+    @Override
+    public void deleteJob(Long id) {
+        jobList.removeIf(job -> job.getId().equals(id));
+    }
+
 }

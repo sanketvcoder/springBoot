@@ -11,4 +11,6 @@ public interface JobService {
     Job createJob(Job job);
 
     Job searchJobById(Long id);
+
+    void deletetJob(Long id);
 }

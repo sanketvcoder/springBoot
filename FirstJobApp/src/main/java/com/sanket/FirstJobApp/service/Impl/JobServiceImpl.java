@@ -41,4 +41,15 @@ public class JobServiceImpl implements JobService {
                 .orElseThrow(() -> new JobIdNotFoundEError("Job with ID " + id + " not found"));
     }
 
+    @Override
+    public void deletetJob(Long id) {
+        if (id == null) {
+            throw new JobIdNotFoundEError("Job ID must not be null");
+        }
+        if (jobRepository.findAll().stream().noneMatch(job -> job.getId().equals(id))) {
+            throw new JobIdNotFoundEError("Job with ID " + id + " not found");
+        }
+        jobRepository.deleteJob(id);
+    }
+
 }

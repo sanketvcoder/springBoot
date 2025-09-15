@@ -10,4 +10,6 @@ public interface JobRepository {
 
     Job createJobs(Job job);
 
+    void deleteJob(Long id);
+
 }
