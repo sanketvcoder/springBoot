@@ -52,4 +52,17 @@ public class JobServiceImpl implements JobService {
         jobRepository.deleteJob(id);
     }
 
+    @Override
+    public boolean updatejob(Long id, Job job) {
+        for (int i = 0; i < jobRepository.findAll().size(); i++) {
+            if (jobRepository.findAll().get(i).getId().equals(id)) {
+                Job existingJob = jobRepository.findAll().get(i);
+                existingJob.setTitle(job.getTitle());
+                existingJob.setDescription(job.getDescription());
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
