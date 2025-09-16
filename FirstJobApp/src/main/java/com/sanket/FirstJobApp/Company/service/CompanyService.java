@@ -7,4 +7,6 @@ import com.sanket.FirstJobApp.Company.entity.Company;
 public interface CompanyService {
 
     List<Company> getAllCompanies();
+
+    Company UpdateCompany(Long Id, Company company);
 }
