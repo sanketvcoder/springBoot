@@ -11,4 +11,6 @@ public interface CompanyController {
     ResponseEntity<List<Company>> getAllCompanies();
 
     ResponseEntity<Company> UpdateCompany(Long Id, Company company);
+
+    ResponseEntity<Company> addingCompany(Company company);
 }

@@ -1,9 +1,12 @@
 package com.sanket.FirstJobApp.Job.entity;
 
+import com.sanket.FirstJobApp.Company.entity.Company;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,6 +20,17 @@ public class Job {
     private String description;
     private String minSalary;
     private String maxSalary;
+
+    @ManyToOne
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public Job() {
     }

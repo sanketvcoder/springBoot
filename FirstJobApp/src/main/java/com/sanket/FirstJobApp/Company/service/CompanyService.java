@@ -9,4 +9,8 @@ public interface CompanyService {
     List<Company> getAllCompanies();
 
     Company UpdateCompany(Long Id, Company company);
+
+    Company addCompany(Company company);
+
+    String deleteCompany(Long Id);
 }

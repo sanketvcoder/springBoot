@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,12 @@ public class CompanyControllerImpl implements CompanyController {
     public ResponseEntity<Company> UpdateCompany(@PathVariable Long Id, @RequestBody Company company) {
         return new ResponseEntity<>(companyService.UpdateCompany(Id, company), HttpStatus.OK);
 
+    }
+
+    @Override
+    @PostMapping("/company")
+    public ResponseEntity<Company> addingCompany(@RequestBody Company company) {
+        return new ResponseEntity<>(companyService.addCompany(company), HttpStatus.CREATED);
     }
 
 }

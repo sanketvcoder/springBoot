@@ -33,4 +33,17 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.save(existingCompany);
     }
 
+    @Override
+    public Company addCompany(Company company) {
+        return companyRepository.save(company);
+    }
+
+    @Override
+    public String deleteCompany(Long Id) {
+        companyRepository.findById(Id)
+                .orElseThrow(() -> new RuntimeException("Company not found with id: " + Id));
+        companyRepository.deleteById(Id);
+        return "Company deleted with id: " + Id;
+    }
+
 }
