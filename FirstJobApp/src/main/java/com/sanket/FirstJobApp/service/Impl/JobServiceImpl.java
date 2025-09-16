@@ -6,16 +6,15 @@ import org.springframework.stereotype.Service;
 
 import com.sanket.FirstJobApp.ExceptionHandler.JobIdNotFoundEError;
 import com.sanket.FirstJobApp.entity.Job;
-import com.sanket.FirstJobApp.repository.Impl.JobRepositoryImpl;
+import com.sanket.FirstJobApp.repository.JobRepository;
 import com.sanket.FirstJobApp.service.JobService;
 
 @Service
 public class JobServiceImpl implements JobService {
 
-    private final JobRepositoryImpl jobRepository;
-    private Long idCounter = 1L;
+    private final JobRepository jobRepository;
 
-    public JobServiceImpl(JobRepositoryImpl jobRepository) {
+    public JobServiceImpl(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
     }
 
@@ -26,18 +25,15 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Job createJob(Job job) {
-        job.setId(idCounter++);
-        if (job.getId() == null || job.getTitle() == null || job.getDescription() == null) {
+        if (job.getTitle() == null || job.getDescription() == null) {
             throw new JobIdNotFoundEError("Job ID, Title, and Description must not be null");
         }
-        return jobRepository.createJobs(job);
+        return jobRepository.save(job);
     }
 
     @Override
     public Job searchJobById(Long id) {
-        return jobRepository.findAll().stream()
-                .filter(job -> job.getId().equals(id))
-                .findFirst()
+        return jobRepository.findById(id)
                 .orElseThrow(() -> new JobIdNotFoundEError("Job with ID " + id + " not found"));
     }
 
@@ -45,26 +41,22 @@ public class JobServiceImpl implements JobService {
     public void deletetJob(Long id) {
         if (id == null) {
             throw new JobIdNotFoundEError("Job ID must not be null");
-        }
-        if (jobRepository.findAll().stream().noneMatch(job -> job.getId().equals(id))) {
+        } else if (jobRepository.findAll().stream().noneMatch(job -> job.getId().equals(id))) {
             throw new JobIdNotFoundEError("Job with ID " + id + " not found");
+        } else {
+            jobRepository.deleteById(id);
         }
-        jobRepository.deleteJob(id);
     }
 
     @Override
     public boolean updatejob(Long id, Job job) {
-        for (int i = 0; i < jobRepository.findAll().size(); i++) {
-            if (jobRepository.findAll().get(i).getId().equals(id)) {
-                Job existingJob = jobRepository.findAll().get(i);
-                existingJob.setTitle(job.getTitle());
-                existingJob.setDescription(job.getDescription());
-                existingJob.setMinSalary(job.getMinSalary());
-                existingJob.setMaxSalary(job.getMaxSalary());
-                return true;
-            }
-        }
-        return false;
+        return jobRepository.findById(id).map(existingJob -> {
+            existingJob.setTitle(job.getTitle());
+            existingJob.setDescription(job.getDescription());
+            existingJob.setMinSalary(job.getMinSalary());
+            existingJob.setMaxSalary(job.getMaxSalary());
+            jobRepository.save(existingJob);
+            return true;
+        }).orElse(false);
     }
-
 }

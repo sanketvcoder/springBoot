@@ -1,15 +1,8 @@
 package com.sanket.FirstJobApp.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sanket.FirstJobApp.entity.Job;
 
-public interface JobRepository {
-
-    List<Job> findAll();
-
-    Job createJobs(Job job);
-
-    void deleteJob(Long id);
-
+public interface JobRepository extends JpaRepository<Job, Long> {
 }
