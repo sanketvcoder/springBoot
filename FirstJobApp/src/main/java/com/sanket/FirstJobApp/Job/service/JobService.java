@@ -1,8 +1,8 @@
-package com.sanket.FirstJobApp.service;
+package com.sanket.FirstJobApp.Job.service;
 
 import java.util.List;
 
-import com.sanket.FirstJobApp.entity.Job;
+import com.sanket.FirstJobApp.Job.entity.Job;
 
 public interface JobService {
 

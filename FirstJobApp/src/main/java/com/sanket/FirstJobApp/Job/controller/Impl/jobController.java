@@ -1,4 +1,4 @@
-package com.sanket.FirstJobApp.controller.Impl;
+package com.sanket.FirstJobApp.Job.controller.Impl;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sanket.FirstJobApp.controller.JobControllerInterface;
-import com.sanket.FirstJobApp.entity.Job;
-import com.sanket.FirstJobApp.service.Impl.JobServiceImpl;
+import com.sanket.FirstJobApp.Job.controller.JobControllerInterface;
+import com.sanket.FirstJobApp.Job.entity.Job;
+import com.sanket.FirstJobApp.Job.service.Impl.JobServiceImpl;
 
 @RestController
 @RequestMapping("/api/v1")

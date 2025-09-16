@@ -1,4 +1,4 @@
-package com.sanket.FirstJobApp.entity;
+package com.sanket.FirstJobApp.Job.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

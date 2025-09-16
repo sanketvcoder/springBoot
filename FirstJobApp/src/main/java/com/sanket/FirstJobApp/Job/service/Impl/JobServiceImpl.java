@@ -1,13 +1,13 @@
-package com.sanket.FirstJobApp.service.Impl;
+package com.sanket.FirstJobApp.Job.service.Impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.sanket.FirstJobApp.ExceptionHandler.JobIdNotFoundEError;
-import com.sanket.FirstJobApp.entity.Job;
-import com.sanket.FirstJobApp.repository.JobRepository;
-import com.sanket.FirstJobApp.service.JobService;
+import com.sanket.FirstJobApp.Job.ExceptionHandler.JobIdNotFoundEError;
+import com.sanket.FirstJobApp.Job.entity.Job;
+import com.sanket.FirstJobApp.Job.repository.JobRepository;
+import com.sanket.FirstJobApp.Job.service.JobService;
 
 @Service
 public class JobServiceImpl implements JobService {
