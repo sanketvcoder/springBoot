@@ -1,4 +1,4 @@
-package com.sanket.FirstJobApp.ExceptionHandler;
+package com.sanket.FirstJobApp.Job.ExceptionHandler;
 
 public class JobIdNotFoundEError extends RuntimeException {
 

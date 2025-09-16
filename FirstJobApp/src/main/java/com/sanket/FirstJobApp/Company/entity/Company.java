@@ -2,7 +2,9 @@ package com.sanket.FirstJobApp.Company.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sanket.FirstJobApp.Job.entity.Job;
+import com.sanket.FirstJobApp.review.entity.Review;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,10 +22,30 @@ public class Company {
     private Long id;
     private String name;
     private String description;
+    @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
+    private List<Review> reviews;
 
     public Company() {
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public Company(String name, String description) {
