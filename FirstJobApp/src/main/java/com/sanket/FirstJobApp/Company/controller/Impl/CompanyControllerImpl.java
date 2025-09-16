@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,18 @@ public class CompanyControllerImpl implements CompanyController {
     @PostMapping("/company")
     public ResponseEntity<Company> addingCompany(@RequestBody Company company) {
         return new ResponseEntity<>(companyService.addCompany(company), HttpStatus.CREATED);
+    }
+
+    @Override
+    @DeleteMapping("/company/{Id}")
+    public ResponseEntity<String> deleteCompany(@PathVariable Long Id) {
+        return new ResponseEntity<>(companyService.deleteCompany(Id), HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping("/company/{id}")
+    public ResponseEntity<Company> getCompanyById(@PathVariable Long id) {
+        return new ResponseEntity<>(companyService.getCompanyById(id), HttpStatus.OK);
     }
 
 }

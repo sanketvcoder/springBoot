@@ -46,4 +46,10 @@ public class CompanyServiceImpl implements CompanyService {
         return "Company deleted with id: " + Id;
     }
 
+    @Override
+    public Company getCompanyById(Long id) {
+        return companyRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Company not found with id: " + id));
+    }
+
 }

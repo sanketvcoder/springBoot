@@ -13,4 +13,8 @@ public interface CompanyController {
     ResponseEntity<Company> UpdateCompany(Long Id, Company company);
 
     ResponseEntity<Company> addingCompany(Company company);
+
+    ResponseEntity<String> deleteCompany(Long Id);
+
+    ResponseEntity<Company> getCompanyById(Long id);
 }

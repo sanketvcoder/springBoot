@@ -13,4 +13,6 @@ public interface CompanyService {
     Company addCompany(Company company);
 
     String deleteCompany(Long Id);
+
+    Company getCompanyById(Long id);
 }
